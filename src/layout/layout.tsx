@@ -5,6 +5,9 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import { Button } from '../components';
 import { Outlet } from 'react-router-dom';
+import arrow from '/assets/arrow.png';
+import helpCenter from '/assets/help-center.png';
+import payment4 from '/assets/logo.png';
 
 export const Layout = () => {
   return (
@@ -46,18 +49,10 @@ export const Layout = () => {
                 <Stack flex={1} height="100%">
                   <Stack flex={0} flexDirection="row" justifyContent="space-between" pl={5} pr={3} py={3}>
                     <Stack justifyContent="center" alignItems="center">
-                      <img width="100%" height="100%" src="/assets/logo.png" alt="payment4" />
+                      <img width="100%" height="100%" src={payment4} alt="payment4" />
                     </Stack>
-                    <Stack
-                      width={17.88}
-                      height={17}
-                      justifyContent="center"
-                      alignItems="center"
-                      // sx={{
-                      //   ...arrowStyle,
-                      // }}
-                    >
-                      <img width="100%" height="100%" src="/assets/arrow.png" />
+                    <Stack width={17.88} height={17} justifyContent="center" alignItems="center">
+                      <img width="100%" height="100%" src={arrow} />
                     </Stack>
                   </Stack>
                   <Stack height="100%">
@@ -70,11 +65,7 @@ export const Layout = () => {
                           fontSize: '12px',
                         },
                       }}
-                    >
-                      {/* <NavbarLink title={t('layout.navbar.link.get-started')} url="/" icon="shuttle" />
-                        <NavbarLink title={t('layout.navbar.link.tickets')} url="/tickets" icon="ticket" />
-                        <NavbarLink title={t('layout.navbar.link.setting')} url="/setting" icon="setting" /> */}
-                    </List>
+                    ></List>
                   </Stack>
                   <Stack flex={0}>
                     <Stack justifyContent="center" alignItems="center">
@@ -82,8 +73,6 @@ export const Layout = () => {
                         flex={1}
                         gap={2}
                         sx={(theme) => ({
-                          // justifyContent: 'center',
-                          // alignItems: 'center',
                           padding: theme.spacing(2, 3),
                           margin: theme.spacing(1.25),
                           backgroundColor: '#6f6fd4',
@@ -91,7 +80,7 @@ export const Layout = () => {
                           borderRadius: theme.spacing(2),
                         })}
                       >
-                        <img height="100%" width="100%" src="/assets/help-center.png" alt="help center" />
+                        <img height="100%" width="100%" src={helpCenter} alt="help center" />
 
                         <Button size="large" sx={{ backgroundColor: 'white', color: '#6f6fd4' }}>
                           Help Center!
