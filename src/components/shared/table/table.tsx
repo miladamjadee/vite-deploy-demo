@@ -45,21 +45,11 @@ export const Table: React.FC<TableProps> = ({ data, columns, footer, toolbar }) 
             data.map((row, index) => (
               <TableRow
                 key={index}
-                // hover
                 onClick={row.onClick}
                 tabIndex={-1}
                 sx={() => ({
                   cursor: 'pointer',
-                  // '&:nth-of-type(odd)': {
-                  //   // backgroundColor: theme.palette.action.hover,
-                  //   border: 0,
-                  // },
-                  // // hide last border
-                  // '&:last-child td, &:last-child th': {
-                  //   border: 0,
-                  // },
                 })}
-                // className={index % 2 === 0 ? styles['gray-row'] : ''}
               >
                 {columns.map((column, index) => {
                   if (typeof column === 'string') {
@@ -86,11 +76,6 @@ export const Table: React.FC<TableProps> = ({ data, columns, footer, toolbar }) 
                           sx={{
                             minHeight: 26,
                             bgcolor: 'white',
-                            // '&:first-of-type': {
-                            //   borderTopLeftRadius: 8,
-                            //   borderBottomLeftRadius: 8,
-                            // },
-
                             ...(index === 0
                               ? {
                                   ml: 1,

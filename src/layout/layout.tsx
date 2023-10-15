@@ -3,11 +3,12 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Stack from '@mui/material/Stack';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import { Button } from '../components';
+import { Button, NavbarLink } from '../components';
 import { Outlet } from 'react-router-dom';
 import arrow from '/assets/arrow.png';
 import helpCenter from '/assets/help-center.png';
 import payment4 from '/assets/logo.png';
+import home from '/assets/home.png';
 
 export const Layout = () => {
   return (
@@ -29,13 +30,17 @@ export const Layout = () => {
         sx={{
           height: '100%',
           backgroundColor: '#F4F8F9',
-          margin: '0 60px 0 60px',
+          marginY: 0,
+          marginX: {
+            xs: 0,
+            lg: '60px',
+          },
           display: 'flex',
           justifyContent: 'center',
           flexGrow: 1,
         }}
       >
-        <Grid container xs={12} direction="row" gap={3} alignItems="stretch" justifyContent="center" sx={{ height: '100%' }}>
+        <Grid container xs={12} direction="row" gap={3} alignItems="stretch" justifyContent={{ xs: 'flex-start', lg: 'center' }} sx={{ height: '100%' }}>
           <Grid xs={2.5} display={{ xs: 'none', lg: 'flex' }} marginLeft="-62px" marginRight={0} paddingTop="1.2rem" paddingBottom="1.2rem" style={{ height: '100%' }}>
             <Box
               sx={{
@@ -65,7 +70,9 @@ export const Layout = () => {
                           fontSize: '12px',
                         },
                       }}
-                    ></List>
+                    >
+                      <NavbarLink title="dashboard" url="/vite-deploy-demo" icon={home} />
+                    </List>
                   </Stack>
                   <Stack flex={0}>
                     <Stack justifyContent="center" alignItems="center">
@@ -93,7 +100,7 @@ export const Layout = () => {
             </Box>
           </Grid>
 
-          <Grid container xs={9.5} direction="row" paddingTop="1.2rem" paddingBottom="70px" style={{ height: '100%' }}>
+          <Grid container xs={12} lg={9.5} direction="row" paddingTop="1.2rem" paddingBottom="70px" style={{ height: '100%' }}>
             <Grid xs={12} ml={2.5}>
               <Box
                 mr="-55px"
@@ -104,7 +111,7 @@ export const Layout = () => {
                   backgroundColor: 'transparent',
                 }}
               >
-                <Typography style={{ fontWeight: 'bold', fontSize: '1.5rem', fontFamily: 'Poppins-bold' }}>Dashboard</Typography>
+                <Typography style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Dashboard</Typography>
               </Box>
             </Grid>
             <Grid xs={12} height="100%" mt={2} mx={2.5}>
