@@ -11,10 +11,3 @@ export type Payment = {
   status: JSX.Element;
   date: string;
 };
-export type BalanceProps = {
-  title: string;
-  price: number;
-  img: string;
-  bgColor: string;
-  symbol: string;
-};

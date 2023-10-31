@@ -3,107 +3,18 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
 import Chart from 'react-apexcharts';
 import ripple from '/assets/ripple.png';
 import bitcoin from '/assets/bitcoin.png';
 import ethereum from '/assets/ethereum.png';
 import stellar from '/assets/stellar.png';
 import { Table } from '../../components';
-
-type Column = {
-  id: string;
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-};
-
-const columns: Column[] = [
-  { id: 'id', label: 'ID', minWidth: 50 },
-  { id: 'coinAmount', label: 'Coin Amount' },
-  { id: 'fiatAmount', label: 'Fiat Amount' },
-  { id: 'date', label: 'Date', minWidth: 60 },
-  { id: 'status', label: 'Status', minWidth: 70 },
-];
-
-type Payment = {
-  id: number;
-  coinAmount: string;
-  fiatAmount: string;
-  status: JSX.Element;
-  date: string;
-};
+import { columns, data } from './mock';
+import { Balance } from './components';
+import { Payment } from './type';
 
 export const Home = () => {
-  const [payments, setPayments] = React.useState<Payment[]>([
-    {
-      id: 132457,
-      coinAmount: '14.3 USDT',
-      fiatAmount: '$14.3',
-      status: (
-        <Stack>
-          <Chip
-            label="VERIFIED"
-            sx={{
-              bgcolor: '#69E381',
-              color: '#FFFFFF',
-              fontSize: '10px',
-              maxWidth: '79px',
-              width: '79px',
-              height: '21px',
-              textTransform: 'lowercase',
-            }}
-          />
-        </Stack>
-      ),
-      date: '2023-05-21',
-    },
-    {
-      id: 132458,
-      coinAmount: '14.3 USDT',
-      fiatAmount: '$14.3',
-      status: (
-        <Stack>
-          <Chip
-            label="Pending"
-            sx={{
-              bgcolor: '#FFB82A',
-              color: '#FFFFFF',
-              fontSize: '10px',
-              maxWidth: '79px',
-              width: '79px',
-              height: '21px',
-              textTransform: 'lowercase',
-            }}
-          />
-        </Stack>
-      ),
-      date: '2023-05-21',
-    },
-    {
-      id: 132459,
-      coinAmount: '14.3 USDT',
-      fiatAmount: '$14.3',
-      status: (
-        <Stack>
-          <Chip
-            label="Expired"
-            sx={{
-              bgcolor: '#FF5D5D',
-              color: '#FFFFFF',
-              fontSize: '10px',
-              maxWidth: '79px',
-              width: '79px',
-              height: '21px',
-              textTransform: 'lowercase',
-            }}
-          />
-        </Stack>
-      ),
-      date: '2023-05-21',
-    },
-  ]);
+  const [payments, setPayments] = React.useState<Payment[]>(data);
   const [chart, setChart] = React.useState({
     series: [
       {
@@ -331,51 +242,5 @@ export const Home = () => {
         </Container>
       </Stack>
     </Stack>
-  );
-};
-
-type BalanceProps = {
-  title: string;
-  price: number;
-  img: string;
-  bgColor: string;
-  symbol: string;
-};
-const Balance = (props: BalanceProps) => {
-  return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      sx={(theme) => ({
-        backgroundColor: '#F8F8FD',
-        borderRadius: '15px',
-        height: 54,
-        paddingX: theme.spacing(2),
-        cursor: 'pointer',
-      })}
-    >
-      <Stack alignItems="center" justifyContent="space-between" flexDirection="row" flex={1}>
-        <Stack flexDirection="row" gap={1}>
-          <Stack width={6} height={27} bgcolor={props.bgColor} borderRadius={15}></Stack>
-          <Stack flexDirection="row" gap={1}>
-            <Stack width={26} height={26}>
-              <img width="100%" height="100%" src={props.img} />
-            </Stack>
-            <Typography color="#363636" style={{ fontSize: 15, fontWeight: 400 }}>
-              {props.title}
-            </Typography>
-          </Stack>
-        </Stack>
-        <Stack flexDirection="row" gap={1} alignItems="center">
-          <Typography color="#1E1E56" style={{ fontSize: 15, fontWeight: 400 }}>
-            {props.price}
-          </Typography>
-          <Typography color="#D0D0EF" style={{ fontSize: 9, fontWeight: 400 }}>
-            {props.symbol}
-          </Typography>
-        </Stack>
-      </Stack>
-    </Box>
   );
 };
